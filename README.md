@@ -12,23 +12,9 @@ These instructions will get you a copy of the project up and running on your loc
 More help about the plugin itself can be found [here](doc/vimsence.txt).
 
 ### Prerequisites
-- **Vim**: Requires Python 3 support
 - **Neovim**: Requires Neovim 0.7+ with Lua support
 
 ### Installing
-
-#### For Vim (Python Version)
-##### [Vim-Plug](https://github.com/junegunn/vim-plug)
-1. Add `Plug 'vimsence/vimsence'` to your vimrc file.
-2. Reload your vimrc or restart
-3. Run `:PlugInstall`
-
-##### [Vundle](https://github.com/VundleVim/Vundle.vim) or similar
-1. Add `Plugin 'vimsence/vimsence'` to your vimrc file.
-2. Reload your vimrc or restart
-3. Run `:BundleInstall`
-
-#### For Neovim (Lua Version)
 ##### [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
 {
@@ -49,29 +35,17 @@ use {
 }
 ```
 
+##### [vim-plug](https://github.com/junegunn/vim-plug)
+Add to your `init.lua` or `init.vim`:
+```vim
+Plug 'vimsence/vimsence'
+```
+
 ##### Other Plugin Managers
-Follow the same pattern as Vim installation methods above.
+Use the same plugin specification: `'vimsence/vimsence'`
 
 ## Configuration
 
-### For Vim (VimScript)
-You can configure VimSence in your `.vimrc` with these options:
-```vim
-let g:vimsence_client_id = '439476230543245312'
-let g:vimsence_small_text = 'Vim'
-let g:vimsence_small_image = 'vim'
-let g:vimsence_editing_details = 'Editing: {}'
-let g:vimsence_editing_state = 'Working on: {}'
-let g:vimsence_editing_large_text = 'Editing a {} file'
-let g:vimsence_file_explorer_text = 'In the file explorer'
-let g:vimsence_file_explorer_details = 'Looking for files'
-let g:vimsence_ignored_file_types = ['help', 'nerdtree']
-let g:vimsence_ignored_directories = ['.git', 'node_modules']
-let g:vimsence_custom_icons = {'python': 'py', 'javascript': 'js'}
-let g:vimsence_discord_flatpak = 0  " Enable for Flatpak Discord on Linux
-```
-
-### For Neovim (Lua)
 Configure VimSence using the `setup()` function:
 ```lua
 require('vimsence').setup({
@@ -96,24 +70,13 @@ require('vimsence').setup({
 - `:DiscordDisconnect` - Disconnect from Discord
 
 ## Development
-First create a virtual environment.
-If you don’t already have a preferred way to do this,
-take some time to look at tools like pew, virtualfish, and virtualenvwrapper.
 
-Install the development dependencies:
-```sh
-pip install -r requirements-dev.txt
-```
+This plugin is written in Lua for Neovim. To develop:
 
-To avoid committing code that violates our style guide, we strongly advise you to install [pre-commit](https://pre-commit.com/) hooks:
-```sh
-pre-commit install
-```
-
-You can also run them anytime using:
-```sh
-pre-commit run --all-files
-```
+1. Fork and clone the repository
+2. Make changes to the Lua files in `lua/vimsence/`
+3. Test with your Neovim configuration
+4. Submit a pull request
 
 ## Authors
 | Contributor                                                                                                                         | What has been done    |
