@@ -12,52 +12,88 @@ These instructions will get you a copy of the project up and running on your loc
 More help about the plugin itself can be found [here](doc/vimsence.txt).
 
 ### Prerequisites
-You need to have Vim/NeoVim with Python3 support
+- **Vim**: Requires Python 3 support
+- **Neovim**: Requires Neovim 0.7+ with Lua support
 
 ### Installing
-#### [Vim-Plug](https://github.com/junegunn/vim-plug)
+
+#### For Vim (Python Version)
+##### [Vim-Plug](https://github.com/junegunn/vim-plug)
 1. Add `Plug 'vimsence/vimsence'` to your vimrc file.
 2. Reload your vimrc or restart
 3. Run `:PlugInstall`
 
-#### [Vundle](https://github.com/VundleVim/Vundle.vim) or similar
+##### [Vundle](https://github.com/VundleVim/Vundle.vim) or similar
 1. Add `Plugin 'vimsence/vimsence'` to your vimrc file.
 2. Reload your vimrc or restart
 3. Run `:BundleInstall`
 
-#### [NeoBundle](https://github.com/Shougo/neobundle.vim)
-1. Add `NeoBundle 'vimsence/vimsence'` to your vimrc file.
-2. Reload your vimrc or restart
-3. Run `:NeoUpdate`
-
-#### [Dein.vim](https://github.com/Shougo/dein.vim)
-1. Add `call dein#add('vimsence/vimsence')` to your vimrc file.
-2. Reload your vimrc or restart
-3. Run `:call dein#install()`
-
-#### [Pathogen](https://github.com/tpope/vim-pathogen)
-```sh
-cd ~/.vim/bundle
-git clone https://github.com/vimsence/vimsence.git
+#### For Neovim (Lua Version)
+##### [lazy.nvim](https://github.com/folke/lazy.nvim)
+```lua
+{
+  'vimsence/vimsence',
+  config = function()
+    require('vimsence').setup()
+  end
+}
 ```
 
-#### Vim8 packages
-```sh
-git submodule add https://github.com/vimsence/vimsence.git vimsence
+##### [packer.nvim](https://github.com/wbthomason/packer.nvim)
+```lua
+use {
+  'vimsence/vimsence',
+  config = function()
+    require('vimsence').setup()
+  end
+}
 ```
+
+##### Other Plugin Managers
+Follow the same pattern as Vim installation methods above.
 
 ## Configuration
-You can configure the messages of VimSence in your `.vimrc` with these options:
+
+### For Vim (VimScript)
+You can configure VimSence in your `.vimrc` with these options:
 ```vim
 let g:vimsence_client_id = '439476230543245312'
-let g:vimsence_small_text = 'NeoVim'
-let g:vimsence_small_image = 'neovim'
+let g:vimsence_small_text = 'Vim'
+let g:vimsence_small_image = 'vim'
 let g:vimsence_editing_details = 'Editing: {}'
 let g:vimsence_editing_state = 'Working on: {}'
-let g:vimsence_file_explorer_text = 'In NERDTree'
+let g:vimsence_editing_large_text = 'Editing a {} file'
+let g:vimsence_file_explorer_text = 'In the file explorer'
 let g:vimsence_file_explorer_details = 'Looking for files'
-let g:vimsence_custom_icons = {'filetype': 'iconname'}
+let g:vimsence_ignored_file_types = ['help', 'nerdtree']
+let g:vimsence_ignored_directories = ['.git', 'node_modules']
+let g:vimsence_custom_icons = {'python': 'py', 'javascript': 'js'}
+let g:vimsence_discord_flatpak = 0  " Enable for Flatpak Discord on Linux
 ```
+
+### For Neovim (Lua)
+Configure VimSence using the `setup()` function:
+```lua
+require('vimsence').setup({
+  client_id = '439476230543245312',
+  small_text = 'Neovim',
+  small_image = 'neovim',
+  editing_details = 'Editing: {}',
+  editing_state = 'Working on: {}',
+  editing_large_text = 'Editing a {} file',
+  file_explorer_text = 'In the file explorer',
+  file_explorer_details = 'Looking for files',
+  ignored_file_types = {'help', 'nerdtree'},
+  ignored_directories = {'.git', 'node_modules'},
+  custom_icons = {python = 'py', javascript = 'js'},
+  discord_flatpak = false  -- Enable for Flatpak Discord on Linux
+})
+```
+
+## Commands
+- `:DiscordUpdatePresence` - Manually update Discord presence
+- `:DiscordReconnect` - Reconnect to Discord
+- `:DiscordDisconnect` - Disconnect from Discord
 
 ## Development
 First create a virtual environment.
