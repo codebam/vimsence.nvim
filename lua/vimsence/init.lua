@@ -184,6 +184,14 @@ function M.update_presence()
   local directory = get_directory()
   local filetype = get_filetype()
   
+  -- Handle empty values
+  if filename == '' then
+    filename = 'Unknown'
+  end
+  if directory == '' then
+    directory = 'Unknown'
+  end
+  
   state = string.format(config.editing_state, directory)
   details = string.format(config.editing_details, filename)
   
