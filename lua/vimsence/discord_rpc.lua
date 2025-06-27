@@ -129,7 +129,9 @@ function DiscordRpc:_do_handshake()
     self:_recv_packet(function(op, data)
       if op == OP_FRAME and data.cmd == 'DISPATCH' and data.evt == 'READY' then
         self.connected = true
-        vim.notify('Vimsence: Connected to Discord', vim.log.levels.INFO)
+        vim.schedule(function()
+          vim.notify('Vimsence: Connected to Discord', vim.log.levels.INFO)
+        end)
       end
     end)
   end, 100)
