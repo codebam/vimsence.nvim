@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">VimSence</h1>
+  <h1 align="center">vimsence.nvim</h1>
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@ More help about the plugin itself can be found [here](doc/vimsence.txt).
 ##### [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
 {
-  'vimsence/vimsence',
+  'codebam/vimsence.nvim',
   config = function()
     require('vimsence').setup()
   end
@@ -28,7 +28,7 @@ More help about the plugin itself can be found [here](doc/vimsence.txt).
 ##### [packer.nvim](https://github.com/wbthomason/packer.nvim)
 ```lua
 use {
-  'vimsence/vimsence',
+  'codebam/vimsence.nvim',
   config = function()
     require('vimsence').setup()
   end
@@ -38,17 +38,17 @@ use {
 ##### [vim-plug](https://github.com/junegunn/vim-plug)
 Add to your `init.lua` or `init.vim`:
 ```vim
-Plug 'vimsence/vimsence'
+Plug 'codebam/vimsence.nvim'
 ```
 
 ##### Other Plugin Managers
-Use the same plugin specification: `'vimsence/vimsence'`
+Use the same plugin specification: `'codebam/vimsence.nvim'`
 
 ## Configuration
 
-Configure VimSence using the `setup()` function:
+Configure vimsence.nvim using the `setup()` function:
 ```lua
-require('vimsence').setup({
+require('vimsense').setup({
   client_id = '439476230543245312',
   small_text = 'Neovim',
   small_image = 'neovim',
